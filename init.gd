@@ -22,14 +22,13 @@ func _ready() -> void:
 		lst_memb.append(memb)
 	
 	# Creation des molécules d'eau internes
-	var R : int = 10  # R vaut 2 * r : l'espace entre 2 anneaux
-	var r_h2o : int = 5  # r est le rayon d'une molécule d'eau
+	var R : int = 10  # R vaut 2 fois le rayon d'une molécule d'eau : l'espace entre 2 anneaux
 	var n : int = 700
 	var ring : int = 0
 	var n_on_ring : int = 1
 	while n>0:
-		var x : float = ring * R * cos(n_on_ring * 2*PI / get_n_on_ring(ring, R, r_h2o))
-		var y : float = ring * R * sin(n_on_ring * 2*PI / get_n_on_ring(ring, R, r_h2o))
+		var x : float = ring * R * cos(n_on_ring * 2*PI / get_n_on_ring(ring))
+		var y : float = ring * R * sin(n_on_ring * 2*PI / get_n_on_ring(ring))
 		# Creation d'une molécule d'eau
 		var mol:RigidBody2D = mol_path.instantiate()
 		mol.position = box_size/2 + Vector2(x, y)
@@ -39,15 +38,15 @@ func _ready() -> void:
 		n -= 1
 		if n_on_ring == 0:
 			ring += 1
-			n_on_ring = get_n_on_ring(ring, R, r_h2o)
+			n_on_ring = get_n_on_ring(ring)
 	
 	# Creation des molécules d'eau externes
 	n = 500
 	# Positionner un cercle autour de la membrane
 	ring = 200/R
-	for i in range(get_n_on_ring(ring, R, r_h2o)):
-		var x : float = ring * R * cos(i * 2*PI / get_n_on_ring(ring, R, r_h2o))
-		var y : float = ring * R * sin(i * 2*PI / get_n_on_ring(ring, R, r_h2o))
+	for i in range(get_n_on_ring(ring)):
+		var x : float = ring * R * cos(i * 2*PI / get_n_on_ring(ring))
+		var y : float = ring * R * sin(i * 2*PI / get_n_on_ring(ring))
 		# Creation d'une molécule d'eau
 		var mol:RigidBody2D = mol_path.instantiate()
 		mol.position = box_size/2 + Vector2(x, y)
@@ -91,5 +90,5 @@ func _process(_delta: float) -> void:
 			
 		init = true
 
-func get_n_on_ring(ring:int, R:int, r:int) -> int:
+func get_n_on_ring(ring:int) -> int:
 	return int(2 * PI * ring)

@@ -12,7 +12,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	var screen_center : Vector2 = get_viewport_rect().size/2
 	
 	# Force de Langevin
 	var i_l:float = 100
