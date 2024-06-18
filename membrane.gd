@@ -20,7 +20,7 @@ func _process(_delta: float) -> void:
 	# Force de planitude
 	var v_avant:Vector2 = (m_avant.position - position).normalized()
 	var v_apres:Vector2 = (m_apres.position - position).normalized()
-	var i_p:float = 10
+	var i_p:float = 5
 	var f_p:Vector2 = i_p * Vector2( v_avant+v_apres )
 	
 	apply_force(f_l + f_p * f_p * f_p)
