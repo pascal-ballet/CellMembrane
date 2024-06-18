@@ -5,16 +5,16 @@ var ressort_path:PackedScene = load("res://ressort.tscn")
 
 var nb:int = 70
 var lst_memb:Array[RigidBody2D]
+var box_size : Vector2 = Vector2(400, 400)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var screen_center : Vector2 = get_viewport_rect().size/2
 	
 	# Creation de la membrane
 	var r:float = 185  # rayon
 	for m in range(nb):
 		var a = m*2*PI / nb
-		var pos:Vector2 = Vector2(screen_center.x + r*cos(a) ,screen_center.y + r*sin(a))
+		var pos:Vector2 = Vector2(box_size.x/2 + r*cos(a) ,box_size.y/2 + r*sin(a))
 		# Creation d'un element de membrane
 		var memb:RigidBody2D = memb_path.instantiate()
 		memb.position = pos
@@ -32,7 +32,7 @@ func _ready() -> void:
 		var y : float = ring * R * sin(n_on_ring * 2*PI / get_n_on_ring(ring, R, r_h2o))
 		# Creation d'une molécule d'eau
 		var mol:RigidBody2D = mol_path.instantiate()
-		mol.position = screen_center + Vector2(x, y)
+		mol.position = box_size/2 + Vector2(x, y)
 		get_tree().root.add_child.call_deferred(mol)
 		# Mise à jour des variables dans la boucle
 		n_on_ring -= 1
@@ -50,16 +50,16 @@ func _ready() -> void:
 		var y : float = ring * R * sin(i * 2*PI / get_n_on_ring(ring, R, r_h2o))
 		# Creation d'une molécule d'eau
 		var mol:RigidBody2D = mol_path.instantiate()
-		mol.position = screen_center + Vector2(x, y)
+		mol.position = box_size/2 + Vector2(x, y)
 		mol._is_ext = true
 		get_tree().root.add_child.call_deferred(mol)
 		n -= 1
 	# Positionner le reste dans les 4 coins
 	var corners : Array[Vector2] = [
-		Vector2(screen_center.x - 200, screen_center.y - 200),  # Coin haut gauche
-		Vector2(screen_center.x + 200, screen_center.y + 200),  # Coin bas droite
-		Vector2(screen_center.x + 200, screen_center.y - 200),  # Coin haut droite
-		Vector2(screen_center.x - 200, screen_center.y + 200)  # Coin bas gauche
+		Vector2(0, 0),  # Coin haut gauche
+		Vector2(box_size.x, box_size.y),  # Coin bas droite
+		Vector2(box_size.x, 0),  # Coin haut droite
+		Vector2(0, box_size.y)  # Coin bas gauche
 	]
 	var i : int = 0 
 	while n>0:

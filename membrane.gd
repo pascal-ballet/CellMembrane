@@ -3,6 +3,8 @@ extends RigidBody2D
 var m_avant:RigidBody2D
 var m_apres:RigidBody2D
 
+var box_size : Vector2 = Vector2(400, 400)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -25,15 +27,15 @@ func _process(_delta: float) -> void:
 	apply_force(f_l + f_p * f_p * f_p)
 	
 	# Rebond sur les bords
-	if position.x < screen_center.x - 200:
-		position.x = screen_center.x - 200
+	if position.x < 0:
+		position.x = 0
 		linear_velocity.x = abs(linear_velocity.x)
-	if position.x > screen_center.x + 200:
-		position.x = screen_center.x + 200
+	if position.x > box_size.x:
+		position.x = box_size.x
 		linear_velocity.x = - abs(linear_velocity.x)
-	if position.y < screen_center.y - 200:
-		position.y = screen_center.y - 200
+	if position.y < 0:
+		position.y = 0
 		linear_velocity.y = abs(linear_velocity.y)
-	if position.y > screen_center.y + 200:
-		position.y = screen_center.y + 200
+	if position.y > box_size.y:
+		position.y = box_size.y
 		linear_velocity.y = - abs(linear_velocity.y)
