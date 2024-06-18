@@ -42,7 +42,7 @@ func _ready() -> void:
 			n_on_ring = get_n_on_ring(ring, R, r_h2o)
 	
 	# Creation des molécules d'eau externes
-	n = 60
+	n = 500
 	# Positionner un cercle autour de la membrane
 	ring = 200/R
 	for i in range(get_n_on_ring(ring, R, r_h2o)):
