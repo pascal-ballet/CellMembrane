@@ -3,7 +3,7 @@ var memb_path:PackedScene = load("res://membrane.tscn")
 var mol_path:PackedScene = load("res://h_2o.tscn")
 var ressort_path:PackedScene = load("res://ressort.tscn")
 
-var nb:int = 70
+var nb:int = 72
 var lst_memb:Array[RigidBody2D]
 var box_size : Vector2 = Vector2(400, 400)
 @export var density : int = 2
@@ -31,6 +31,8 @@ func _ready() -> void:
 			# Creation d'une molécule d'eau
 			var mol:RigidBody2D = mol_path.instantiate()
 			mol.position = Vector2(pos_x, pos_y)
+			if (memb_r - R/2) < mol.position.distance_to(box_size/2) and mol.position.distance_to(box_size/2) < (memb_r + R/2):
+				mol.queue_free()
 			if mol.position.distance_to(box_size/2) > memb_r:
 				mol._is_ext = true
 			get_tree().root.add_child.call_deferred(mol)
