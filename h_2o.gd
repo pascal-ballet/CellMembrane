@@ -1,12 +1,12 @@
 extends RigidBody2D
 
+
 @export var _is_ext:bool = false
-var box_size : Vector2 = Vector2(400, 400)
+var box_size : Vector2 = General.box_size
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass # Replace with function body.
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -14,8 +14,8 @@ func _process(_delta: float) -> void:
 		# Disparition
 		if randf() < 0.0005:
 			var a:float = 2*PI*randf()
-			var dest_x:float = box_size.x/2 + 250 * cos(a)
-			var dest_y:float = box_size.y/2 + 250 * sin(a)
+			var dest_x:float = box_size.x/2 + 2 * box_size.x * cos(a)
+			var dest_y:float = box_size.y/2 + 2 * box_size.y * sin(a)
 			global_translate(Vector2(dest_x-position.x, dest_y-position.y))
 			_is_ext = true
 			return
@@ -35,7 +35,7 @@ func _process(_delta: float) -> void:
 			linear_velocity.y = - abs(linear_velocity.y)
 
 	# Force de Langevin
-	var i:float = 500
+	var i:float = 200
 	var fx:float = i * (randf()-0.5)
 	var fy:float = i * (randf()-0.5)
 	apply_force(Vector2( fx, fy))

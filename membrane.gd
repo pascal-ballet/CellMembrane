@@ -3,7 +3,7 @@ extends RigidBody2D
 var m_avant:RigidBody2D
 var m_apres:RigidBody2D
 
-var box_size : Vector2 = Vector2(400, 400)
+var box_size : Vector2 = General.box_size
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

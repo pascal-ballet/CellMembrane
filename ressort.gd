@@ -2,8 +2,8 @@ extends Node
 
 var node_1:RigidBody2D = null
 var node_2:RigidBody2D = null
-var length_0:float = 20
-var k:float = 10
+var length_0:float = 10
+var k:float = 15
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
