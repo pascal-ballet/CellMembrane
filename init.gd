@@ -91,5 +91,5 @@ func _process(_delta: float) -> void:
 			
 		init = true
 
-func get_n_on_ring(ring:int, R:int, r:int):
+func get_n_on_ring(ring:int, R:int, r:int) -> int:
 	return int(2 * PI * ring)
