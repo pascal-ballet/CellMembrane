@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://h3wfeio8b75m"]
+
+[ext_resource type="Script" path="res://membrane.gd" id="1_5t7uu"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_2p3k8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lsugv"]
+
+[node name="Membrane" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_5t7uu")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(14.91, 14.91)
+mesh = SubResource("SphereMesh_2p3k8")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.75, 0.75)
+shape = SubResource("CircleShape2D_lsugv")
+metadata/_edit_lock_ = true

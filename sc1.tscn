@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6dj7fstptkjv"]
+
+[ext_resource type="Script" path="res://init.gd" id="1_mb1st"]
+[ext_resource type="PackedScene" uid="uid://da3m7d4hrrxiv" path="res://h_2o.tscn" id="2_i5l8b"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_mb1st")
+
+[node name="H2O" parent="." instance=ExtResource("2_i5l8b")]
+position = Vector2(302, 319)
+
+[node name="H2O2" parent="." instance=ExtResource("2_i5l8b")]
+position = Vector2(312, 319)
