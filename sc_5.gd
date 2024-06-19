@@ -1,6 +1,6 @@
 extends Node3D
 
-# ##### 3 membrane qui se collent #####
+# ##### 4 membrane qui se collent #####
 
 var memb_path:PackedScene = load("res://membrane.tscn")
 var mol_path:PackedScene = load("res://h_2o.tscn")
