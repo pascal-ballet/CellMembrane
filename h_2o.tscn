@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dci36ak2ummp0"]
+[gd_scene load_steps=6 format=3 uid="uid://dci36ak2ummp0"]
 
 [ext_resource type="Script" path="res://h_2o.gd" id="1_mt7ef"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_22sle"]
+friction = 0.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_1ibev"]
 
@@ -11,6 +14,7 @@ albedo_color = Color(0, 0, 0.847059, 1)
 
 [node name="H2O" type="RigidBody3D"]
 axis_lock_linear_z = true
+physics_material_override = SubResource("PhysicsMaterial_22sle")
 gravity_scale = 0.0
 script = ExtResource("1_mt7ef")
 

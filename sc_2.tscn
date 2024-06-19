@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw5gnis3aljk8"]
+
+[ext_resource type="Script" path="res://sc_2.gd" id="1_gn7bw"]
+[ext_resource type="Script" path="res://addons/goutte.camera.trackball/trackball_camera.gd" id="2_pltvp"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_gn7bw")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 500)
+script = ExtResource("2_pltvp")
+stabilize_horizon = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 90)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -90)
