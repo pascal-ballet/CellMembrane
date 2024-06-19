@@ -1,4 +1,7 @@
 extends Node3D
+
+# ##### Membrane qui se replit #####
+
 var memb_path:PackedScene = load("res://membrane.tscn")
 var mol_path:PackedScene = load("res://h_2o.tscn")
 var ressort_path:PackedScene = load("res://ressort.tscn")

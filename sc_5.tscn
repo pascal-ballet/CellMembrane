@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqsjr38va07pg"]
+
+[ext_resource type="Script" path="res://sc_5.gd" id="1_8lo7s"]
+[ext_resource type="Script" path="res://addons/goutte.camera.trackball/trackball_camera.gd" id="2_vm4xt"]
+
+[node name="Node3D" type="Node3D" groups=["membrane1", "membrane2", "membrane3", "membrane4"]]
+script = ExtResource("1_8lo7s")
+
+[node name="TrackballCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 500)
+script = ExtResource("2_vm4xt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
