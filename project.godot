@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Membrane"
-run/main_scene="res://sc1.tscn"
+config/name="Membrane V 5"
+run/main_scene="res://sc_1.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,10 +19,13 @@ config/icon="res://icon.svg"
 
 General="*res://general.gd"
 
-[display]
+[editor_plugins]
 
-window/size/viewport_width=600
-window/size/viewport_height=600
+enabled=PackedStringArray("res://addons/goutte.camera.trackball/plugin.cfg")
+
+[physics]
+
+3d/physics_engine="JoltPhysics3D"
 
 [rendering]
 

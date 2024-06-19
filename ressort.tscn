@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://e84jn4g4i45n"]
+[gd_scene load_steps=2 format=3 uid="uid://cf8on6i6eann3"]
 
-[ext_resource type="Script" path="res://ressort.gd" id="1_8sit4"]
+[ext_resource type="Script" path="res://ressort.gd" id="1_dtl3u"]
 
 [node name="Ressort" type="Node"]
-script = ExtResource("1_8sit4")
+script = ExtResource("1_dtl3u")

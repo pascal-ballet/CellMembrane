@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends RigidBody3D
 
 
 @export var _is_ext:bool = false
@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 			var a:float = 2*PI*randf()
 			var dest_x:float = box_size.x/2 + 2 * box_size.x * cos(a)
 			var dest_y:float = box_size.y/2 + 2 * box_size.y * sin(a)
-			global_translate(Vector2(dest_x-position.x, dest_y-position.y))
+			global_translate(Vector3(dest_x-position.x, dest_y-position.y, 0))
 			_is_ext = true
 			return
 	else:
@@ -38,4 +38,4 @@ func _process(_delta: float) -> void:
 	var i:float = 200
 	var fx:float = i * (randf()-0.5)
 	var fy:float = i * (randf()-0.5)
-	apply_force(Vector2( fx, fy))
+	apply_force(Vector3( fx, fy, 0))

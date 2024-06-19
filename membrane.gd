@@ -1,7 +1,7 @@
-extends RigidBody2D
+extends RigidBody3D
 
-var m_avant:RigidBody2D
-var m_apres:RigidBody2D
+var m_avant:RigidBody3D
+var m_apres:RigidBody3D
 
 var box_size : Vector2 = General.box_size
 
@@ -15,15 +15,15 @@ func _process(_delta: float) -> void:
 	
 	# Force de Langevin
 	var i_l:float = 100
-	var f_l:Vector2 = Vector2( i_l * (randf()-0.5), i_l * (randf()-0.5))
+	var f_l:Vector3 = Vector3( i_l * (randf()-0.5), i_l * (randf()-0.5), 0)
 	
 	# Force de planitude
-	var v_avant:Vector2 = (m_avant.position - position).normalized()
-	var v_apres:Vector2 = (m_apres.position - position).normalized()
-	var i_p:float = 5
-	var f_p:Vector2 = i_p * Vector2( v_avant+v_apres )
-	
-	apply_force(f_l + f_p * f_p * f_p)
+	var v_avant:Vector3 = (m_avant.position - position).normalized()
+	var v_apres:Vector3 = (m_apres.position - position).normalized()
+	var i_p_1:float = 20
+	var ip_3:float = 5
+	var f_p:Vector3 = i_p_1 * Vector3( v_avant+v_apres ) + (ip_3 * Vector3( v_avant+v_apres )) * (ip_3 * Vector3( v_avant+v_apres )) * (ip_3 * Vector3( v_avant+v_apres ))
+	apply_force(f_l + f_p)
 	
 	# Rebond sur les bords
 	if position.x < 0:
