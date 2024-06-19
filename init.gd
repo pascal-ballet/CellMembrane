@@ -12,8 +12,8 @@ var nb:int = 2*PI*memb_r/16
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Position de la caméra
-	$Camera3D.position.x = box_size.x/2
-	$Camera3D.position.y = box_size.y/2
+	position.x = box_size.x/2
+	position.y = box_size.y/2
 	
 	
 	# Creation de la membrane

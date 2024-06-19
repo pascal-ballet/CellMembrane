@@ -14,8 +14,8 @@ func _process(_delta: float) -> void:
 		# Disparition
 		if randf() < 0.0005:
 			var a:float = 2*PI*randf()
-			var dest_x:float = box_size.x/2 + 2 * box_size.x * cos(a)
-			var dest_y:float = box_size.y/2 + 2 * box_size.y * sin(a)
+			var dest_x:float = box_size.x/2 + 1.5 * box_size.x * cos(a)
+			var dest_y:float = box_size.y/2 + 1.5 * box_size.y * sin(a)
 			global_translate(Vector3(dest_x-position.x, dest_y-position.y, 0))
 			_is_ext = true
 			return
