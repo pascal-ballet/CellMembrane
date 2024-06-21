@@ -10,8 +10,11 @@ var lst_memb1:Array[RigidBody3D]
 var lst_memb2:Array[RigidBody3D]
 var box_size : Vector2 = General.box_size
 var density : int = General.density
-var memb_r : float = General.memb_r
-var nb:int = 2*PI*memb_r/16
+var memb1_r : float = General.memb1_r
+var memb2_r : float = General.memb2_r
+
+var nb1:int = 2*PI*memb1_r/16
+var nb2:int = 2*PI*memb2_r/16
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,9 +23,9 @@ func _ready() -> void:
 	position.y = box_size.y/2
 	
 	# Creation de la membrane 1
-	for m in range(nb):
-		var a = m*2*PI / nb
-		var pos:Vector3 = Vector3(box_size.x/2 - memb_r - 5 + memb_r*cos(a) ,box_size.y/2 + memb_r*sin(a), 0)
+	for m in range(nb1):
+		var a = m*2*PI / nb1
+		var pos:Vector3 = Vector3(box_size.x/2 - memb1_r - 5 + memb1_r*cos(a) ,box_size.y/2 + memb1_r*sin(a), 0)
 		# Creation d'un element de membrane
 		var memb:RigidBody3D = memb_path.instantiate()
 		memb.position = pos
@@ -32,9 +35,9 @@ func _ready() -> void:
 		lst_memb1.append(memb)
 	
 	# Creation de la membrane 2
-	for m in range(nb):
-		var a = m*2*PI / nb
-		var pos:Vector3 = Vector3(box_size.x/2 + memb_r + 5 + memb_r*cos(a) ,box_size.y/2 + memb_r*sin(a), 0)
+	for m in range(nb2):
+		var a = m*2*PI / nb2
+		var pos:Vector3 = Vector3(box_size.x/2 + memb2_r + 5 + memb2_r*cos(a) ,box_size.y/2 + memb2_r*sin(a), 0)
 		# Creation d'un element de membrane
 		var memb:RigidBody3D = memb_path.instantiate()
 		memb.position = pos
@@ -61,11 +64,11 @@ var init:bool = false
 func _process(_delta: float) -> void:
 	if init == false:
 		# Creation des ressorts
-		for m in range(nb):
+		for m in range(nb1):
 			# Ressorts pour la membrane 1
 			var memb_a:RigidBody3D = lst_memb1[m]
-			var memb_b:RigidBody3D = lst_memb1[(m+1)%nb]
-			var memb_c:RigidBody3D = lst_memb1[(m+2)%nb]
+			var memb_b:RigidBody3D = lst_memb1[(m+1)%nb1]
+			var memb_c:RigidBody3D = lst_memb1[(m+2)%nb1]
 			# Creation d'un ressort
 			var ressort = ressort_path.instantiate()
 			ressort.node_1 = memb_a
@@ -75,12 +78,13 @@ func _process(_delta: float) -> void:
 			memb_b.m_avant = memb_a
 			memb_b.m_apres = memb_c
 			
+		for m in range(nb2):
 			# Ressorts pour la membrane 2
-			memb_a = lst_memb2[m]
-			memb_b = lst_memb2[(m+1)%nb]
-			memb_c = lst_memb2[(m+2)%nb]
+			var memb_a:RigidBody3D = lst_memb2[m]
+			var memb_b:RigidBody3D = lst_memb2[(m+1)%nb2]
+			var memb_c:RigidBody3D = lst_memb2[(m+2)%nb2]
 			# Creation d'un ressort
-			ressort = ressort_path.instantiate()
+			var ressort = ressort_path.instantiate()
 			ressort.node_1 = memb_a
 			ressort.node_2 = memb_b
 			get_tree().root.add_child.call_deferred(ressort)

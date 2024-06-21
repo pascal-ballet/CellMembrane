@@ -36,7 +36,7 @@ func _process(_delta: float) -> void:
 				linear_velocity.y = - abs(linear_velocity.y)
 
 		# Force de Langevin
-		var i:float = 200
+		var i:float = 500
 		var fx:float = i * (randf()-0.5)
 		var fy:float = i * (randf()-0.5)
 		apply_force(Vector3( fx, fy, 0))
